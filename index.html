@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CabinSaver - Serious deals for serious cruisers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #718096;
+            font-style: italic;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        /* Carousel */
+        .carousel {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .carousel-slide:nth-child(2) {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .carousel-slide:nth-child(3) {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 15px;
+        }
+
+        .carousel-btn {
+            background: rgba(255,255,255,0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .carousel-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #cbd5e0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: #667eea;
+            transform: scale(1.3);
+        }
+
+        /* Price card */
+        .price-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .price-card h3 {
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+
+        .price-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #e53e3e;
+            margin-bottom: 15px;
+        }
+
+        .price-details {
+            font-size: 1.1rem;
+            color: #4a5568;
+        }
+
+        /* Chart */
+        .chart-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .chart {
+            width: 100%;
+            height: 300px;
+            position: relative;
+        }
+
+        .chart svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .carousel-slide {
+                height: 300px;
+            }
+
+            .price-card {
+                padding: 25px;
+            }
+
+            .price-display {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CabinSaver</h1>
+            <p class="tagline">Serious deals for serious cruisers</p>
+        </header>
+
+        <section>
+            <h2>Example deals</h2>
+            <div class="carousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">🚢 Caribbean Paradise<br>7 Days - $599</div>
+                    <div class="carousel-slide">⚓ Mediterranean Magic<br>10 Days - $899</div>
+                    <div class="carousel-slide">🌊 Alaska Adventure<br>14 Days - $1,299</div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" onclick="moveCarousel(-1)">‹</button>
+                    <button class="carousel-btn" onclick="moveCarousel(1)">›</button>
+                </div>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active" onclick="goToSlide(0)"></span>
+                <span class="dot" onclick="goToSlide(1)"></span>
+                <span class="dot" onclick="goToSlide(2)"></span>
+            </div>
+        </section>
+
+        <section>
+            <h2>Daily best prices</h2>
+            <div class="price-card">
+                <h3>Today's Hottest Deal</h3>
+                <div class="price-display">$449</div>
+                <p class="price-details">
+                    Inside Cabin • Norwegian Gem<br>
+                    Bermuda 7-Day • Sailing Dec 15
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Price charts</h2>
+            <div class="chart-container">
+                <div class="chart">
+                    <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Grid lines -->
+                        <line x1="50" y1="250" x2="450" y2="250" stroke="#e2e8f0" stroke-width="2"/>
+                        <line x1="50" y1="200" x2="450" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+                        <line x1="50" y1="150" x2="450" y2="150" stroke="#e2e8f0" stroke-width="1"/>
+                        <line x1="50" y1="100" x2="450" y2="100" stroke="#e2e8f0" stroke-width="1"/>
+                        <line x1="50" y1="50" x2="450" y2="50" stroke="#e2e8f0" stroke-width="1"/>
+                        
+                        <!-- Price line -->
+                        <polyline
+                            fill="none"
+                            stroke="#667eea"
+                            stroke-width="3"
+                            points="50,220 100,200 150,180 200,190 250,160 300,140 350,120 400,100 450,90"
+                        />
+                        
+                        <!-- Data points -->
+                        <circle cx="50" cy="220" r="5" fill="#667eea"/>
+                        <circle cx="100" cy="200" r="5" fill="#667eea"/>
+                        <circle cx="150" cy="180" r="5" fill="#667eea"/>
+                        <circle cx="200" cy="190" r="5" fill="#667eea"/>
+                        <circle cx="250" cy="160" r="5" fill="#667eea"/>
+                        <circle cx="300" cy="140" r="5" fill="#667eea"/>
+                        <circle cx="350" cy="120" r="5" fill="#667eea"/>
+                        <circle cx="400" cy="100" r="5" fill="#667eea"/>
+                        <circle cx="450" cy="90" r="5" fill="#667eea"/>
+                        
+                        <!-- Labels -->
+                        <text x="250" y="280" text-anchor="middle" font-size="14" fill="#718096">Last 30 Days</text>
+                        <text x="20" y="130" text-anchor="middle" font-size="14" fill="#718096" transform="rotate(-90 20 130)">Price ($)</text>
+                    </svg>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 3;
+
+        function moveCarousel(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const track = document.getElementById('carouselTrack');
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update dots
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Auto-advance carousel
+        setInterval(() => moveCarousel(1), 5000);
+    </script>
+</body>
+</html>
