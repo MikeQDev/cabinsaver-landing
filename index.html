@@ -1,626 +1,145 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CabinSaver - Serious deals for serious cruisers</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TravelSolo - Discover Your Next Adventure</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="landing">
+    <div class="container-dark">
+      <!-- Navbar -->
+      <nav class="navbar-dark">
+        <div class="nav-container-dark">
+          <div class="logo-dark">TravelSolo</div>
+          <ul class="nav-links-dark" id="navLinks">
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#experiences">Experiences</a></li>
+            <li><a href="#deals">Special Deals</a></li>
+          </ul>
+          <div class="hamburger-dark" id="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="mobile-menu-dark" id="mobileMenu">
+            <a href="#destinations" onclick="toggleMenu()">Destinations</a>
+            <a href="#experiences" onclick="toggleMenu()">Experiences</a>
+            <a href="#deals" onclick="toggleMenu()">Special Deals</a>
+          </div>
+        </div>
+      </nav>
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0a0e27;
-            min-height: 100vh;
-            color: #e2e8f0;
-        }
+      <!-- Hero Section -->
+      <header class="hero-dark">
+        <h1>Your Journey Starts Here</h1>
+        <p class="tagline">
+          Curated travel experiences designed for solo adventurers
+        </p>
+        <span class="data-badge"
+          >Verified Tours • Local Guides • Safe & Supported</span
+        >
+      </header>
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: linear-gradient(180deg, #1a1f3a 0%, #0f1729 100%);
-            min-height: 100vh;
-        }
+      <!-- Destinations Section -->
+      <section class="service-section" id="destinations">
+        <h2>Popular Destinations</h2>
+        <p class="section-subtitle">
+          Handpicked locations perfect for solo travelers seeking adventure and
+          connection
+        </p>
+        <div class="service-content">
+          <div class="service-icon-large">🌍</div>
+          <h3>Explore the World on Your Terms</h3>
+          <div class="service-details">
+            From the bustling streets of Tokyo to the serene beaches of Bali,
+            discover destinations that welcome solo travelers with open arms.
+            Each location is carefully selected for safety, accessibility, and
+            opportunities to connect with fellow adventurers.
+            <br /><br />
+            <strong style="color: #22c55e"
+              >Over 50 countries • 200+ verified experiences</strong
+            >
+          </div>
+          <button class="cta-button">Browse All Destinations</button>
+        </div>
+      </section>
 
-        /* Navigation */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background: rgba(10, 14, 39, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+      <!-- Experiences Section -->
+      <section class="service-section" id="experiences">
+        <h2>Unique Experiences</h2>
+        <p class="section-subtitle">
+          Authentic adventures curated by locals who know their cities best
+        </p>
+        <div class="service-content">
+          <div class="service-icon-large">✨</div>
+          <h3>Make Memories That Last</h3>
+          <div class="service-details">
+            Join small group tours, cooking classes, hiking adventures, and
+            cultural experiences designed specifically for solo travelers. Every
+            experience is hosted by verified local guides who are passionate
+            about sharing their culture and connecting travelers.
+            <br /><br />
+            <strong style="color: #22c55e"
+              >Small groups • Expert guides • Flexible bookings</strong
+            >
+          </div>
+          <button class="cta-button">Discover Experiences</button>
+        </div>
+      </section>
 
-        .logo {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #60a5fa;
-            letter-spacing: -0.5px;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #60a5fa;
-            border-radius: 2px;
-            transition: all 0.3s;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-            letter-spacing: 0.3px;
-        }
-
-        .nav-links a:hover {
-            color: #60a5fa;
-        }
-
-        .mobile-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: #0a0e27;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 8px;
-            padding: 20px;
-            margin: 10px;
-            min-width: 200px;
-        }
-
-        .mobile-menu.active {
-            display: block;
-        }
-
-        .mobile-menu a {
-            display: block;
-            padding: 12px 0;
-            color: #94a3b8;
-            text-decoration: none;
-            font-weight: 500;
-            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
-        }
-
-        .mobile-menu a:last-child {
-            border-bottom: none;
-        }
-
-        .mobile-menu a:hover {
-            color: #60a5fa;
-        }
-
-        /* Header */
-        header {
-            text-align: center;
-            padding: 80px 40px 60px;
-            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
-        }
-
-        h1 {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 3rem;
-            font-weight: 700;
-            color: #60a5fa;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-        }
-
-        .tagline {
-            font-size: 1.1rem;
-            color: #94a3b8;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        .data-badge {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 8px 16px;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 20px;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.85rem;
-            color: #60a5fa;
-        }
-
-        section {
-            padding: 60px 40px;
-            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
-        }
-
-        h2 {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #e2e8f0;
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
-        }
-
-        .section-subtitle {
-            font-size: 0.95rem;
-            color: #64748b;
-            margin-bottom: 35px;
-            font-weight: 500;
-        }
-
-        /* Carousel */
-        .carousel {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 12px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-slide {
-            min-width: 100%;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            color: white;
-            padding: 40px;
-            position: relative;
-        }
-
-        .carousel-slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(255,255,255,0.03) 0px,
-                rgba(255,255,255,0.03) 1px,
-                transparent 1px,
-                transparent 2px
-            );
-        }
-
-        .carousel-slide h3 {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 2rem;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .carousel-slide p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
-
-        .carousel-slide:nth-child(2) {
-            background: linear-gradient(135deg, #15803d 0%, #22c55e 100%);
-        }
-
-        .carousel-slide:nth-child(3) {
-            background: linear-gradient(135deg, #7c2d12 0%, #f97316 100%);
-        }
-
-        .carousel-controls {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            padding: 0 15px;
-            z-index: 10;
-        }
-
-        .carousel-btn {
-            background: rgba(10, 14, 39, 0.8);
-            border: 1px solid rgba(59, 130, 246, 0.5);
-            width: 45px;
-            height: 45px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: #60a5fa;
-            transition: all 0.3s;
-            font-weight: bold;
-        }
-
-        .carousel-btn:hover {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: #60a5fa;
-        }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(59, 130, 246, 0.3);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .dot.active {
-            background: #60a5fa;
-            transform: scale(1.4);
-        }
-
-        /* Price card */
-        .price-card {
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(59, 130, 246, 0.05);
-            border: 2px solid rgba(59, 130, 246, 0.3);
-            border-radius: 12px;
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .price-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(59, 130, 246, 0.02) 10px,
-                rgba(59, 130, 246, 0.02) 20px
-            );
-        }
-
-        .price-card-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .price-card h3 {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 1.3rem;
-            color: #94a3b8;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .price-display {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 4rem;
-            font-weight: 700;
-            color: #60a5fa;
-            margin-bottom: 20px;
-            line-height: 1;
-        }
-
-        .price-details {
-            font-size: 1.1rem;
-            color: #cbd5e0;
-            line-height: 1.8;
-        }
-
-        .cta-button {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 14px 32px;
-            background: #3b82f6;
-            color: white;
-            font-family: 'IBM Plex Mono', monospace;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .cta-button:hover {
-            background: #2563eb;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-        }
-
-        /* Chart */
-        .chart-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(59, 130, 246, 0.05);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 12px;
-            padding: 40px;
-        }
-
-        .chart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .chart-title {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 1.1rem;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .chart-metric {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.9rem;
-            color: #22c55e;
-        }
-
-        .chart {
-            width: 100%;
-            height: 300px;
-            position: relative;
-        }
-
-        .chart svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                padding: 15px 20px;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            header, section {
-                padding: 40px 20px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            .carousel-slide {
-                height: 300px;
-                padding: 30px;
-            }
-
-            .carousel-slide h3 {
-                font-size: 1.5rem;
-            }
-
-            .price-card {
-                padding: 30px 20px;
-            }
-
-            .price-display {
-                font-size: 3rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <nav>
-            <div class="logo">CABINSAVER</div>
-            <ul class="nav-links">
-                <li><a href="#daily">Daily Deals</a></li>
-                <li><a href="#charts">Price Charts</a></li>
-            </ul>
-            <div class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="mobile-menu" id="mobileMenu">
-                <a href="#daily" onclick="toggleMenu()">Daily Deals</a>
-                <a href="#charts" onclick="toggleMenu()">Price Charts</a>
-            </div>
-        </nav>
-
-        <header>
-            <h1>CABINSAVER</h1>
-            <p class="tagline">Serious deals for serious cruisers</p>
-            <span class="data-badge">LIVE DATA • INSIDER ACCESS • VERIFIED DEALS</span>
-        </header>
-
-        <section>
-            <h2>FEATURED_DEALS</h2>
-            <p class="section-subtitle">Real-time pricing from exclusive industry sources</p>
-            <div class="carousel">
-                <div class="carousel-track" id="carouselTrack">
-                    <div class="carousel-slide">
-                        <h3>Caribbean Paradise</h3>
-                        <p>7 Days • $599 • Inside Cabin</p>
-                    </div>
-                    <div class="carousel-slide">
-                        <h3>Mediterranean Magic</h3>
-                        <p>10 Days • $899 • Balcony</p>
-                    </div>
-                    <div class="carousel-slide">
-                        <h3>Alaska Adventure</h3>
-                        <p>14 Days • $1,299 • Oceanview</p>
-                    </div>
-                </div>
-                <div class="carousel-controls">
-                    <button class="carousel-btn" onclick="moveCarousel(-1)">‹</button>
-                    <button class="carousel-btn" onclick="moveCarousel(1)">›</button>
-                </div>
-            </div>
-            <div class="carousel-dots">
-                <span class="dot active" onclick="goToSlide(0)"></span>
-                <span class="dot" onclick="goToSlide(1)"></span>
-                <span class="dot" onclick="goToSlide(2)"></span>
-            </div>
-        </section>
-
-        <section id="daily">
-            <h2>DAILY_BEST_PRICES</h2>
-            <p class="section-subtitle">Updated every 24 hours with verified pricing data</p>
-            <div class="price-card">
-                <div class="price-card-content">
-                    <h3>Today's Optimal Deal</h3>
-                    <div class="price-display">$449</div>
-                    <div class="price-details">
-                        Inside Cabin • Norwegian Gem<br>
-                        Bermuda 7-Day • Sailing Dec 15<br>
-                        <strong style="color: #22c55e;">↓ 23% below market average</strong>
-                    </div>
-                    <button class="cta-button">View All Daily Deals</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="charts">
-            <h2>PRICE_ANALYTICS</h2>
-            <p class="section-subtitle">Historical pricing data and trend analysis</p>
-            <div class="chart-container">
-                <div class="chart-header">
-                    <span class="chart-title">30-Day Price Trend</span>
-                    <span class="chart-metric">▲ 12% increase</span>
-                </div>
-                <div class="chart">
-                    <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Grid -->
-                        <line x1="50" y1="250" x2="450" y2="250" stroke="rgba(59, 130, 246, 0.2)" stroke-width="2"/>
-                        <line x1="50" y1="200" x2="450" y2="200" stroke="rgba(59, 130, 246, 0.1)" stroke-width="1" stroke-dasharray="5,5"/>
-                        <line x1="50" y1="150" x2="450" y2="150" stroke="rgba(59, 130, 246, 0.1)" stroke-width="1" stroke-dasharray="5,5"/>
-                        <line x1="50" y1="100" x2="450" y2="100" stroke="rgba(59, 130, 246, 0.1)" stroke-width="1" stroke-dasharray="5,5"/>
-                        <line x1="50" y1="50" x2="450" y2="50" stroke="rgba(59, 130, 246, 0.1)" stroke-width="1" stroke-dasharray="5,5"/>
-                        
-                        <!-- Area fill -->
-                        <polygon
-                            fill="rgba(59, 130, 246, 0.1)"
-                            points="50,220 100,200 150,180 200,190 250,160 300,140 350,120 400,100 450,90 450,250 50,250"
-                        />
-                        
-                        <!-- Price line -->
-                        <polyline
-                            fill="none"
-                            stroke="#60a5fa"
-                            stroke-width="3"
-                            points="50,220 100,200 150,180 200,190 250,160 300,140 350,120 400,100 450,90"
-                        />
-                        
-                        <!-- Data points -->
-                        <circle cx="50" cy="220" r="5" fill="#60a5fa" stroke="#0a0e27" stroke-width="2"/>
-                        <circle cx="100" cy="200" r="5" fill="#60a5fa" stroke="#0a0e27" stroke-width="2"/>
-                        <circle cx="150" cy="180" r="5" fill="#60a5fa" stroke="#0a0e27" stroke-width="2"/>
-                        <circle cx="200" cy="190" r="5" fill="#60a5fa" stroke="#0a0e27" stroke-width="2"/>
-                        <circle cx="250" cy="160" r="5" fill="#60a5fa" stroke="#0a0e27" stroke-width="2"/>
-                        <circle cx="300" cy="140" r="5" fill="#60a5fa" stroke="#0a0e27" stroke-width="2"/>
-                        <circle cx="350" cy="120" r="5" fill="#60a5fa" stroke="#0a0e27" stroke-width="2"/>
-                        <circle cx="400" cy="100" r="5" fill="#60a5fa" stroke="#0a0e27" stroke-width="2"/>
-                        <circle cx="450" cy="90" r="6" fill="#22c55e" stroke="#0a0e27" stroke-width="2"/>
-                        
-                        <!-- Labels -->
-                        <text x="250" y="280" text-anchor="middle" font-size="12" fill="#64748b" font-family="IBM Plex Mono, monospace">LAST 30 DAYS</text>
-                        <text x="15" y="150" text-anchor="middle" font-size="12" fill="#64748b" font-family="IBM Plex Mono, monospace" transform="rotate(-90 15 150)">PRICE ($)</text>
-                    </svg>
-                </div>
-                <button class="cta-button" style="margin-top: 30px;">Explore Analytics Dashboard</button>
-            </div>
-        </section>
+      <!-- Deals Section -->
+      <section class="service-section" id="deals">
+        <h2>Special Deals</h2>
+        <p class="section-subtitle">
+          Exclusive offers and packages designed with solo travelers in mind
+        </p>
+        <div class="service-content">
+          <div class="service-icon-large">💎</div>
+          <h3>Travel More, Spend Less</h3>
+          <div class="service-details">
+            No single supplements, no added fees. Our special deals are designed
+            to make solo travel affordable and accessible. Get notified about
+            flash sales, last-minute deals, and exclusive partnerships with
+            boutique hotels and unique accommodations.
+            <br /><br />
+            <strong style="color: #22c55e"
+              >Save up to 40% • No hidden fees • Instant confirmation</strong
+            >
+          </div>
+          <button class="cta-button">View Current Deals</button>
+        </div>
+      </section>
     </div>
 
     <script>
-        let currentSlide = 0;
-        const totalSlides = 3;
+      function toggleMenu() {
+        const menu = document.getElementById("mobileMenu");
+        const hamburger = document.getElementById("hamburger");
+        menu.classList.toggle("active");
+        hamburger.classList.toggle("active");
+      }
 
-        function moveCarousel(direction) {
-            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-            updateCarousel();
+      // Close menu when clicking outside
+      document.addEventListener("click", function (event) {
+        const menu = document.getElementById("mobileMenu");
+        const hamburger = document.getElementById("hamburger");
+        if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+          menu.classList.remove("active");
+          hamburger.classList.remove("active");
         }
+      });
 
-        function goToSlide(index) {
-            currentSlide = index;
-            updateCarousel();
-        }
-
-        function updateCarousel() {
-            const track = document.getElementById('carouselTrack');
-            track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            document.querySelectorAll('.dot').forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-        }
-
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('active');
-        }
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const menu = document.getElementById('mobileMenu');
-            const hamburger = document.querySelector('.hamburger');
-            if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-                menu.classList.remove('active');
-            }
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
         });
-
-        // Auto-advance carousel
-        setInterval(() => moveCarousel(1), 5000);
+      });
     </script>
-</body>
+  </body>
 </html>
