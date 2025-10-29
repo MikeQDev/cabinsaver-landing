@@ -3,19 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TravelSolo - Discover Your Next Adventure</title>
+    <title>CabinSaver - Deals for solo cruisers</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body class="landing">
     <div class="container-dark">
       <!-- Navbar -->
       <nav class="navbar-dark">
         <div class="nav-container-dark">
-          <div class="logo-dark">TravelSolo</div>
+          <div class="logo-dark">CabinSaver</div>
           <ul class="nav-links-dark" id="navLinks">
-            <li><a href="#destinations">Destinations</a></li>
-            <li><a href="#experiences">Experiences</a></li>
-            <li><a href="#deals">Special Deals</a></li>
+            <li><a href="#example-deals">Previous deals</a></li>
+            <li><a href="#deal-alerts">Deal alerts</a></li>
+            <li><a href="#catalog">Best deals</a></li>
+            <li><a href="#charts">Price charts</a></li>
           </ul>
           <div class="hamburger-dark" id="hamburger" onclick="toggleMenu()">
             <span></span>
@@ -23,91 +25,90 @@
             <span></span>
           </div>
           <div class="mobile-menu-dark" id="mobileMenu">
-            <a href="#destinations" onclick="toggleMenu()">Destinations</a>
-            <a href="#experiences" onclick="toggleMenu()">Experiences</a>
-            <a href="#deals" onclick="toggleMenu()">Special Deals</a>
+            <a href="#example-deals" onclick="toggleMenu()">Previous deals</a>
+            <a href="#deal-alerts" onclick="toggleMenu()">Deal alerts</a>
+            <a href="#catalog" onclick="toggleMenu()">Best deals</a>
+            <a href="#charts" onclick="toggleMenu()">Price charts</a>
           </div>
         </div>
       </nav>
 
       <!-- Hero Section -->
       <header class="hero-dark">
-        <h1>Your Journey Starts Here</h1>
-        <p class="tagline">
-          Curated travel experiences designed for solo adventurers
-        </p>
-        <span class="data-badge"
-          >Verified Tours • Local Guides • Safe & Supported</span
-        >
+        <h1>Never pay double occupancy again</h1>
+        <p class="tagline">NCL cruise deals curated for solo travelers</p>
+        <!--<span class="data-badge">Verified Tours • Local Guides • Safe & Supported</span>-->
       </header>
 
-      <!-- Destinations Section -->
-      <section class="service-section" id="destinations">
-        <h2>Popular Destinations</h2>
+      <section class="service-section" id="example-deals">
+        <!--<h2>Price alerts</h2>
         <p class="section-subtitle">
           Handpicked locations perfect for solo travelers seeking adventure and
           connection
-        </p>
+        </p>-->
+        <div class="service-content">
+          <div class="service-icon-large">🤑</div>
+          <h3>Previous deals</h3>
+          <div class="service-details">
+            <a href="1.png">Proof</a>
+            <br /><br />
+            <strong style="color: #22c55e"
+              >Want deals like these? Keep scrolling</strong
+            >
+          </div>
+          <!--<button class="cta-button">Sign up for deal alerts</button>-->
+        </div>
+      </section>
+
+      <section class="service-section" id="deal-alerts">
+        <!--<h2>Price alerts</h2>
+        <p class="section-subtitle">
+          Handpicked locations perfect for solo travelers seeking adventure and
+          connection
+        </p>-->
         <div class="service-content">
           <div class="service-icon-large">🌍</div>
-          <h3>Explore the World on Your Terms</h3>
+          <h3>Deal alerts for your home ports</h3>
           <div class="service-details">
-            From the bustling streets of Tokyo to the serene beaches of Bali,
-            discover destinations that welcome solo travelers with open arms.
-            Each location is carefully selected for safety, accessibility, and
-            opportunities to connect with fellow adventurers.
+            Stop hunting for sailings -- tell CabinSaver your preferred
+            embarkation port(s) and be notified when there's a good deal.
             <br /><br />
             <strong style="color: #22c55e"
-              >Over 50 countries • 200+ verified experiences</strong
+              >Over 40 embarkation ports to choose from</strong
             >
           </div>
-          <button class="cta-button">Browse All Destinations</button>
+          <button class="cta-button">Sign up for deal alerts</button>
         </div>
       </section>
 
-      <!-- Experiences Section -->
-      <section class="service-section" id="experiences">
-        <h2>Unique Experiences</h2>
-        <p class="section-subtitle">
-          Authentic adventures curated by locals who know their cities best
-        </p>
+      <section class="service-section" id="catalog">
         <div class="service-content">
           <div class="service-icon-large">✨</div>
-          <h3>Make Memories That Last</h3>
+          <h3>Best deal sailing catalog</h3>
           <div class="service-details">
-            Join small group tours, cooking classes, hiking adventures, and
-            cultural experiences designed specifically for solo travelers. Every
-            experience is hosted by verified local guides who are passionate
-            about sharing their culture and connecting travelers.
+            Browse sailings with the lowest cost-per-night and filter for your
+            preferences.
             <br /><br />
             <strong style="color: #22c55e"
-              >Small groups • Expert guides • Flexible bookings</strong
+              >Best value sailings updated daily</strong
             >
           </div>
-          <button class="cta-button">Discover Experiences</button>
+          <button class="cta-button">Browse sailings</button>
         </div>
       </section>
 
-      <!-- Deals Section -->
-      <section class="service-section" id="deals">
-        <h2>Special Deals</h2>
-        <p class="section-subtitle">
-          Exclusive offers and packages designed with solo travelers in mind
-        </p>
+      <section class="service-section" id="charts">
         <div class="service-content">
-          <div class="service-icon-large">💎</div>
-          <h3>Travel More, Spend Less</h3>
+          <div class="service-icon-large">📉</div>
+          <h3>Price charts</h3>
           <div class="service-details">
-            No single supplements, no added fees. Our special deals are designed
-            to make solo travel affordable and accessible. Get notified about
-            flash sales, last-minute deals, and exclusive partnerships with
-            boutique hotels and unique accommodations.
+            Analyze price patterns based on historical sailing prices.
             <br /><br />
             <strong style="color: #22c55e"
-              >Save up to 40% • No hidden fees • Instant confirmation</strong
+              >Track sailing prices since 2024</strong
             >
           </div>
-          <button class="cta-button">View Current Deals</button>
+          <button class="cta-button">View price charts</button>
         </div>
       </section>
     </div>
