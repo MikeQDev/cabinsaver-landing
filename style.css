@@ -17,8 +17,8 @@
 
 body {
   font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
-    Cantarell, sans-serif;
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Cantarell,
+    sans-serif;
   line-height: 1.4;
   color: #2c3e50;
   background: linear-gradient(
@@ -543,6 +543,7 @@ input[type="range"]::-moz-range-track {
   padding: 40px;
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 
 .service-content::before {
@@ -589,7 +590,7 @@ input[type="range"]::-moz-range-track {
 }
 
 .cta-button {
-  display: block;
+  display: inline-block;
   margin: 25px auto 0;
   padding: 14px 32px;
   background: #3b82f6;
@@ -601,8 +602,9 @@ input[type="range"]::-moz-range-track {
   border: none;
   cursor: pointer;
   transition: all 0.3s;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  /* text-transform: uppercase;
+  letter-spacing: 1px; */
+  text-align: center;
 }
 
 .cta-button:hover {
@@ -610,7 +612,6 @@ input[type="range"]::-moz-range-track {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
 }
-
 /* ========== Responsive Styles ========== */
 
 @media (max-width: 900px) {
